@@ -5,6 +5,7 @@ function ProductList({ list }) {
       {list.map((items) => (
         <CardProducts
           key={items.id}
+          id={items.id}
           image={items.cover}
           name={items.title}
           seller={items.author}

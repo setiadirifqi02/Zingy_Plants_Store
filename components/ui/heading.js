@@ -4,7 +4,7 @@ function Heading(props) {
       <h1 className=" mb-5 font-[poppins] text-xl font-semibold text-gray-600 md:text-3xl">
         {props.title}
       </h1>
-      <p className="font-light text-gray-600">{props.desc}</p>
+      <p className="font-[poppins] font-light text-gray-600">{props.desc}</p>
     </div>
   );
 }

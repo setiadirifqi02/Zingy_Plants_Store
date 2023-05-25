@@ -26,7 +26,7 @@ function ProductTestimoni({ listTestimonies }) {
             <p className="font-[poppins] text-xs font-semibold text-gray-500">
               {testimonies.post}
             </p>
-            <p className="mt-3 w-96  font-[poppins] text-xs italic text-gray-400 md:w-full ">
+            <p className="mt-3 w-72 font-[poppins]  text-xs italic text-gray-400 sm:w-96 md:w-full ">
               "{testimonies.desc}"
             </p>
           </div>

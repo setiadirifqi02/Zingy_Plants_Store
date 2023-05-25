@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,6 +13,7 @@ import ButtonLinkRound from "../ui/button-round";
 
 function Navbar(props) {
   const [isOpen, setIsOpen] = useState(false);
+  const { list } = useSelector((state) => state.cart);
 
   function onNavClick() {
     setIsOpen(!isOpen);
@@ -23,7 +25,7 @@ function Navbar(props) {
 
   return (
     <nav className="fixed top-0 z-50 w-screen bg-white">
-      <div className="flex items-center justify-around">
+      <div className="flex items-center justify-between px-5 md:px-28">
         {/* Desktop nav Display */}
         <div className="at z-50 flex w-full justify-between p-5 md:w-auto">
           <Link href="/">
@@ -62,7 +64,7 @@ function Navbar(props) {
         </ul>
         <div className="relative hidden md:flex">
           <span className="absolute -right-3 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-green-400 text-white">
-            1
+            {list?.length}
           </span>
           <ButtonLinkRound link="cart">
             <SlBasketLoaded />
@@ -71,7 +73,7 @@ function Navbar(props) {
 
         {/* Mobile Nav Display */}
         <ul
-          className={`absolute bottom-0 top-0 h-screen w-full bg-white py-24 pl-4 font-semibold duration-500 md:hidden ${
+          className={`absolute bottom-0 top-10 h-screen w-full bg-white py-24 pl-4 font-semibold duration-500 md:hidden ${
             isOpen ? "left-0" : "left-[-100%]"
           }`}
         >
@@ -104,10 +106,10 @@ function Navbar(props) {
           </li>
           <div className="relative flex w-8 items-center py-5">
             <span className="absolute -right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-green-400 text-white">
-              1
+              {list?.length}
             </span>
             <ButtonLinkRound link="cart">
-              <SlBasketLoaded />{" "}
+              <SlBasketLoaded onClick={onNavClick} />{" "}
             </ButtonLinkRound>
           </div>
         </ul>

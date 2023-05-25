@@ -1,17 +1,25 @@
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/redux/slice/cartSlice";
 import Button from "../ui/button";
 import ButtonLinkRound from "../ui/button-round";
 
 import { FiShoppingBag, FiHeart, FiArrowRight } from "react-icons/fi";
 
 function CardProducts(props) {
+  const dispatch = useDispatch();
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({ ...props, quantity: 1 }));
+    console.log("successfuly add to cart");
+  };
   return (
     <div className="card-product___container mb-1 h-80 w-40 rounded-[12px] text-left   md:mb-10 md:w-60">
       <div className="card-product___cover relative w-40 md:w-60">
         <div className="card-product___cover-hero group">
           <Image
             src={`/${props.image}`}
-            alt="gambar"
+            alt={`gambar ${props.id}`}
             className=" rounded-[12px]"
             width={0}
             height={0}
@@ -20,7 +28,7 @@ function CardProducts(props) {
           />
           <div className="card-product___cover-action absolute top-0 hidden h-full w-full items-end justify-center pb-5 opacity-0 transition delay-500 ease-in-out group-hover:flex group-hover:opacity-100">
             <div className="card-action flex justify-evenly gap-3">
-              <Button>
+              <Button onClick={addToCartHandler}>
                 <FiShoppingBag />
               </Button>
               <Button>
